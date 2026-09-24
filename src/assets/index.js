@@ -22,9 +22,6 @@ import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
 
 import timechain from "./company/timechain.jpg"
-import bharat from "./company/bharat.jpg"
-import oasis from "./company/oasis.jpg"
-import octa from "./company/octa.jpg"
 
 import news from "./news.png";
 import ico from "./ico.png";
@@ -53,9 +50,6 @@ export {
   typescript,
   threejs,
   timechain,
-  bharat,
-  oasis,
-  octa,
   news,
   ico,
   schain,
