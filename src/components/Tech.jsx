@@ -45,11 +45,10 @@ const Tech = () => {
           role="tab"
           aria-selected={activeCategory === null}
           onClick={() => setActiveCategory(null)}
-          className={`px-4 py-2 rounded-lg text-[13px] font-medium transition-all duration-200 border ${
-            activeCategory === null
-              ? "bg-indigo-500/20 border-indigo-500/40 text-indigo-300"
-              : "border-white/[0.08] text-[#aaa6c3] hover:border-white/20 hover:text-white"
-          }`}
+          className={`px-4 py-2 rounded-lg text-[13px] font-medium transition-all duration-200 border ${activeCategory === null
+            ? "bg-indigo-500/20 border-indigo-500/40 text-indigo-300"
+            : "border-white/[0.08] text-[#aaa6c3] hover:border-white/20 hover:text-white"
+            }`}
         >
           All
         </button>
@@ -61,11 +60,10 @@ const Tech = () => {
               role="tab"
               aria-selected={activeCategory === cat.name}
               onClick={() => setActiveCategory(cat.name === activeCategory ? null : cat.name)}
-              className={`px-4 py-2 rounded-lg text-[13px] font-medium transition-all duration-200 border ${
-                activeCategory === cat.name
-                  ? `${c.bg} ${c.border} ${c.text}`
-                  : "border-white/[0.08] text-[#aaa6c3] hover:border-white/20 hover:text-white"
-              }`}
+              className={`px-4 py-2 rounded-lg text-[13px] font-medium transition-all duration-200 border ${activeCategory === cat.name
+                ? `${c.bg} ${c.border} ${c.text}`
+                : "border-white/[0.08] text-[#aaa6c3] hover:border-white/20 hover:text-white"
+                }`}
             >
               {cat.name}
             </button>
@@ -122,8 +120,46 @@ const Tech = () => {
             { name: "TypeScript", level: 85, color: "#3b82f6" },
             { name: "Next.js", level: 80, color: "#6366f1" },
             { name: "Node.js", level: 78, color: "#10b981" },
-            { name: "BSV Blockchain", level: 70, color: "#f59e0b" },
+            { name: "Blockchain", level: 70, color: "#f59e0b" },
             { name: "React Native", level: 72, color: "#8b5cf6" },
+          ].map((tech) => (
+            <div key={tech.name} className="flex-1 min-w-[140px]">
+              <div className="flex justify-between items-center mb-1.5">
+                <span className="text-[13px] text-white font-medium">{tech.name}</span>
+                <span className="text-[11px] font-mono" style={{ color: tech.color }}>
+                  {tech.level}%
+                </span>
+              </div>
+              <div className="h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${tech.level}%` }}
+                  transition={{ duration: 1, ease: "easeOut" }}
+                  className="h-full rounded-full"
+                  style={{ backgroundColor: tech.color }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Secondary tech highlight */}
+      <motion.div
+        variants={fadeIn("up", "", 0.4, 1)}
+        className="mt-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6"
+      >
+        <p className="text-[12px] font-mono text-white/40 mb-4 uppercase tracking-wider">
+          Secondary Expertise
+        </p>
+        <div className="flex flex-wrap gap-3">
+          {[
+            { name: "Node.js", level: 80, color: "#10b981" },
+            { name: "Python", level: 75, color: "#3b82f6" },
+            { name: "SQL", level: 80, color: "#6366f1" },
+            { name: "Git", level: 78, color: "#10b981" },
+            { name: "Docker", level: 70, color: "#f59e0b" },
+            { name: "AWS", level: 72, color: "#8b5cf6" },
           ].map((tech) => (
             <div key={tech.name} className="flex-1 min-w-[140px]">
               <div className="flex justify-between items-center mb-1.5">

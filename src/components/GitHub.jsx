@@ -9,7 +9,7 @@ const GITHUB_USERNAME = "BhavsarShubham";
 const PINNED_REPOS = [
   {
     name: "news-factory",
-    description: "Decentralized BSV news portal with smart contract-driven wallet and subscription management.",
+    description: "Decentralized Blockchain news portal with smart contract-driven wallet and subscription management.",
     language: "TypeScript",
     html_url: "https://github.com/BhavsarShubham/news-factory",
   },

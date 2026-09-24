@@ -14,7 +14,7 @@ const pillars = [
   },
   {
     label: "Blockchain",
-    desc: "BSV-based wallets, smart contracts, and decentralized applications.",
+    desc: "Blockchain wallets, smart contracts, and decentralized applications.",
     icon: "⬡",
     color: "emerald",
   },
@@ -84,7 +84,7 @@ const About = () => {
             </span>{" "}
             — with hands-on blockchain development experience building{" "}
             <span className="text-indigo-300 font-medium">
-              BSV-based wallet systems and smart contracts
+              Blockchain wallet systems and smart contracts
             </span>
             .
           </p>
