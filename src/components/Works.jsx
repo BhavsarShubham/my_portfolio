@@ -85,7 +85,7 @@ const HackathonCard = ({ project }) => (
           {[
             { step: "00:00", label: "Hackathon Start", color: "text-indigo-400" },
             { step: "12:00", label: "Core Architecture", color: "text-purple-400" },
-            { step: "24:00", label: "BSV Integration & Smart Contracts", color: "text-emerald-400" },
+            { step: "24:00", label: "Blockchain Integration & Smart Contracts", color: "text-emerald-400" },
             { step: "36:00", label: "UI Polish & Testing", color: "text-amber-400" },
             { step: "48:00", label: "Submission → 1st Place / 64 Teams 🏆", color: "text-amber-300" },
           ].map((item, i) => (

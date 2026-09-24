@@ -98,7 +98,7 @@ export const experiences = [
     location: "Remote",
     type: "internship",
     points: [
-      "Contributed to BSV-based blockchain development projects.",
+      "Contributed to Blockchain blockchain development projects.",
       "Explored smart contract development and wallet integration patterns.",
     ],
   },
@@ -136,7 +136,7 @@ export const projects = [
     tagline: "Blockchain Wallet Platform",
     category: "Blockchain · Full Stack · Production",
     description:
-      "Contributed full-stack features to the Neucron blockchain wallet console — a production platform for managing BSV-based wallet operations, digital assets, and certificates. Improved client-side UI performance, built reusable component architecture, and integrated production-grade backend APIs.",
+      "Contributed full-stack features to the Neucron blockchain wallet console — a production platform for managing Blockchain wallet operations, digital assets, and certificates. Improved client-side UI performance, built reusable component architecture, and integrated production-grade backend APIs.",
     role: "Software Developer",
     contribution: "Full-stack features, API integration, component architecture, production debugging",
     tags: [
@@ -144,7 +144,7 @@ export const projects = [
       { name: "Next.js", color: "green-text-gradient" },
       { name: "TypeScript", color: "pink-text-gradient" },
       { name: "Node.js", color: "orange-text-gradient" },
-      { name: "BSV Blockchain", color: "green-text-gradient" },
+      { name: "Blockchain", color: "green-text-gradient" },
     ],
     highlights: [
       "10+ RESTful API integrations",
@@ -208,23 +208,23 @@ export const projects = [
   {
     name: "Open Run — Stablecoin Platform",
     tagline: "1st Place · 64 Teams · 48 Hours",
-    category: "Hackathon · Blockchain · BSV",
+    category: "Hackathon · Blockchain · Blockchain",
     description:
-      "Built a stablecoin platform in 48 hours during the Open Run Hackathon, enabling users to mint, transfer, and manage BSV-backed stable digital assets. Won 1st place in Track 3 among 64 competing teams.",
+      "Built a stablecoin platform in 48 hours during the Open Run Hackathon, enabling users to mint, transfer, and manage Blockchainbacked stable digital assets. Won 1st place in Track 3 among 64 competing teams.",
     role: "Builder",
-    contribution: "Full product: frontend, smart contracts, BSV integration",
+    contribution: "Full product: frontend, smart contracts, Blockchain integration",
     tags: [
       { name: "React", color: "blue-text-gradient" },
       { name: "TypeScript", color: "green-text-gradient" },
-      { name: "BSV Blockchain", color: "orange-text-gradient" },
+      { name: "Blockchain", color: "orange-text-gradient" },
       { name: "Smart Contracts", color: "pink-text-gradient" },
     ],
     highlights: [
       "🏆 1st Place — Track 3",
       "64 competing teams",
       "Built in 48 hours",
-      "Mint · Transfer · Manage BSV assets",
-      "Full-stack: React + TypeScript + BSV",
+      "Mint · Transfer · Manage Blockchain assets",
+      "Full-stack: React + TypeScript + Blockchain",
     ],
     live_link: "https://stablecoin-tcl.vercel.app/",
     github_link: null,
@@ -234,20 +234,20 @@ export const projects = [
   },
   {
     name: "News Factory",
-    tagline: "Decentralized BSV News Portal",
+    tagline: "Decentralized Blockchain News Portal",
     category: "Blockchain · Full Stack",
     description:
-      "A full-stack decentralized news portal on the BSV blockchain with smart contract-driven wallet and subscription management, using SvelteKit, TypeScript, PostgreSQL, and Neucron Wallet.",
+      "A full-stack decentralized news portal on the Blockchain with smart contract-driven wallet and subscription management, using SvelteKit, TypeScript, PostgreSQL, and Neucron Wallet.",
     role: "Developer",
-    contribution: "Full-stack development, BSV integration, smart contracts",
+    contribution: "Full-stack development, Blockchain integration, smart contracts",
     tags: [
       { name: "SvelteKit", color: "orange-text-gradient" },
       { name: "TypeScript", color: "blue-text-gradient" },
       { name: "PostgreSQL", color: "green-text-gradient" },
-      { name: "BSV", color: "pink-text-gradient" },
+      { name: "Blockchain", color: "pink-text-gradient" },
     ],
     highlights: [
-      "BSV blockchain payments",
+      "Blockchain payments",
       "Smart contract subscriptions",
       "Neucron Wallet integration",
       "Deployed on Vercel",
@@ -321,16 +321,16 @@ export const skillCategories = [
     color: "#10b981",
     skills: [
       "Node.js", "Express.js", "REST APIs",
-      "PostgreSQL", "MongoDB", "SQL",
+      "PostgreSQL", "MongoDB", "SQL", "GraphQL",
     ],
   },
   {
     name: "Blockchain",
     color: "#f59e0b",
     skills: [
-      "BSV Blockchain", "Smart Contracts", "DApps",
+      "Ethereum Blockchain", "Smart Contracts", "DApps",
       "Solidity", "web3.js", "ethers.js",
-      "Hardhat", "Neucron Wallet",
+      "Hardhat", "Blockchain",
     ],
   },
   {
@@ -390,7 +390,7 @@ export const achievements = [
   {
     title: "Blockchain Development Bootcamp",
     subtitle: "Comprehensive training",
-    detail: "BSV blockchain development fundamentals",
+    detail: "Blockchain development fundamentals",
     type: "certification",
     year: "2024",
     icon: "bootcamp",
@@ -407,7 +407,7 @@ export const achievements = [
   },
   {
     title: "Bitcoin Script Course",
-    subtitle: "BSV scripting",
+    subtitle: "Blockchain scripting",
     detail: "Bitcoin Script programming fundamentals",
     type: "certification",
     year: "2024",
