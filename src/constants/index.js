@@ -280,6 +280,30 @@ export const projects = [
     github_link: "https://github.com/BhavsarShubham/ICO_Market",
     featured: false,
   },
+  {
+    name: "Supply Chain",
+    tagline: "Provenance Tracking on Ethereum",
+    category: "Blockchain · Ethereum · Full Stack",
+    description:
+      "A blockchain-based supply chain management system on Ethereum to track goods' provenance in real time. Uses smart contracts for automated verification and fraud prevention, with a React.js interface and Web3.js integration.",
+    role: "Blockchain Developer",
+    contribution: "Smart contracts, Web3.js integration, React.js frontend",
+    tags: [
+      { name: "Next.js", color: "blue-text-gradient" },
+      { name: "Solidity", color: "green-text-gradient" },
+      { name: "Web3.js", color: "pink-text-gradient" },
+      { name: "Ethereum", color: "orange-text-gradient" },
+    ],
+    highlights: [
+      "Ethereum smart contracts",
+      "Real-time goods provenance tracking",
+      "Fraud prevention via on-chain verification",
+      "Web3.js blockchain interaction",
+    ],
+    live_link: null,
+    github_link: "https://github.com/BhavsarShubham/SHUBHAM_supply_chain_manage",
+    featured: false,
+  },
 ];
 
 export const skillCategories = [
