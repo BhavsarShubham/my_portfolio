@@ -4,7 +4,6 @@ import { styles } from "../styles";
 import { experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { textVariant, fadeIn } from "../utils/motion";
-import { timechain } from "../assets";
 
 const typeColors = {
   "full-time": { label: "Full-time", bg: "bg-indigo-500/15", text: "text-indigo-300", border: "border-indigo-500/30" },

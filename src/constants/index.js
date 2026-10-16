@@ -1,52 +1,12 @@
-import {
-  mobile,
-  backend,
-  creator,
-  web,
-  javascript,
-  typescript,
-  html,
-  css,
-  reactjs,
-  nextjs,
-  tailwind,
-  nodejs,
-  mongodb,
-  hardhat,
-  psql,
-  solidity,
-  timechain,
-} from "../assets";
+import { timechain } from "../assets";
 
 export const navLinks = [
   { id: "about", title: "About" },
   { id: "experience", title: "Experience" },
   { id: "projects", title: "Projects" },
   { id: "skills", title: "Skills" },
-  { id: "github", title: "GitHub" },
+  // { id: "github", title: "GitHub" },
   { id: "contact", title: "Contact" },
-];
-
-export const services = [
-  { title: "Full Stack Development", icon: backend },
-  { title: "Blockchain / Web3", icon: creator },
-  { title: "Mobile Development", icon: mobile },
-  { title: "Frontend Engineering", icon: web },
-];
-
-export const technologies = [
-  { name: "JavaScript", icon: javascript },
-  { name: "TypeScript", icon: typescript },
-  { name: "React JS", icon: reactjs },
-  { name: "Next.js", icon: nextjs },
-  { name: "Node JS", icon: nodejs },
-  { name: "Tailwind CSS", icon: tailwind },
-  { name: "Solidity", icon: solidity },
-  { name: "Hardhat", icon: hardhat },
-  { name: "PostgreSQL", icon: psql },
-  { name: "MongoDB", icon: mongodb },
-  { name: "HTML 5", icon: html },
-  { name: "CSS 3", icon: css },
 ];
 
 export const experiences = [

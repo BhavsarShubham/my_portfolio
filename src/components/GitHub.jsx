@@ -99,14 +99,23 @@ const GitHubSection = () => {
   const [repos, setRepos] = useState(PINNED_REPOS);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
+    let cancelled = false;
+    const controller = new AbortController();
+    // Timeout after 8 seconds to prevent indefinite loading
+    const timeoutId = setTimeout(() => controller.abort(), 8000);
+
     const fetchRepos = async () => {
+      setLoading(true);
+      setError(false);
       try {
         const res = await fetch(
-          `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6&type=public`
+          `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6&type=public`,
+          { signal: controller.signal }
         );
-        if (res.ok) {
+        if (!cancelled && res.ok) {
           const data = await res.json();
           if (data && data.length > 0) {
             setRepos(
@@ -124,17 +133,26 @@ const GitHubSection = () => {
                 }))
             );
           }
-        } else {
+        } else if (!cancelled) {
           setError(true);
         }
-      } catch {
-        setError(true);
+      } catch (err) {
+        if (!cancelled) {
+          setError(true);
+        }
       } finally {
-        setLoading(false);
+        clearTimeout(timeoutId);
+        if (!cancelled) setLoading(false);
       }
     };
     fetchRepos();
-  }, []);
+
+    return () => {
+      cancelled = true;
+      controller.abort();
+      clearTimeout(timeoutId);
+    };
+  }, [retryCount]);
 
   return (
     <>
@@ -192,9 +210,17 @@ const GitHubSection = () => {
       )}
 
       {error && (
-        <p className="mt-4 text-[12px] text-white/30 font-mono">
-          // Showing curated repositories — GitHub API rate limited
-        </p>
+        <div className="mt-4 flex items-center gap-3">
+          <p className="text-[12px] text-white/30 font-mono">
+            // Showing curated repositories — GitHub API rate limited
+          </p>
+          <button
+            onClick={() => setRetryCount((c) => c + 1)}
+            className="text-[12px] text-indigo-400 font-mono hover:text-indigo-300 transition-colors underline underline-offset-2"
+          >
+            retry
+          </button>
+        </div>
       )}
     </>
   );
