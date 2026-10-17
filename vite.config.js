@@ -10,7 +10,7 @@ export default defineConfig({
   },
   build: {
     // Increase chunk size warning limit to avoid noise from Three.js
-    chunkSizeWarningLimit: 2000,
+    // chunkSizeWarningLimit: 2000,
     rollupOptions: {
       output: {
         // Split large vendor chunks for faster loading
