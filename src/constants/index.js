@@ -161,7 +161,7 @@ export const projects = [
       "Asset lifecycle management",
       "Backend API integration",
     ],
-    live_link: "https://assetyzer-develop.vercel.app/asset-class",
+    live_link: "http://assetyzer.io/",
     github_link: null,
     featured: false,
   },

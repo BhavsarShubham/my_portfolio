@@ -97,7 +97,7 @@ const Contact = () => {
         </p>
       </motion.div>
 
-      <div className="xl:mt-4 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden">
+      <div className="xl:mt-4 flex xl:flex-row flex-col gap-10 overflow-hidden">
         {/* Form */}
         <motion.div
           variants={slideIn("left", "tween", 0.2, 1)}
