@@ -1,4 +1,4 @@
-import { timechain } from "../assets";
+import { timechain, neucronImg, boxmateImg, assetyzerImg, openrunImg, newsfactoryImg, icoImg, supplychainImg } from "../assets";
 
 export const navLinks = [
   { id: "about", title: "About" },
@@ -95,8 +95,9 @@ export const projects = [
     name: "Neucron Console",
     tagline: "Blockchain Wallet Platform",
     category: "Blockchain · Full Stack · Production",
+    image: neucronImg,
     description:
-      "Contributed full-stack features to the Neucron blockchain wallet console — a production platform for managing Blockchain wallet operations, digital assets, and certificates. Improved client-side UI performance, built reusable component architecture, and integrated production-grade backend APIs.",
+      "Production blockchain wallet console for managing digital assets, certificates, and wallet operations. Built full-stack features with React.js, Next.js, and React Native.",
     role: "Software Developer",
     contribution: "Full-stack features, API integration, component architecture, production debugging",
     tags: [
@@ -121,8 +122,9 @@ export const projects = [
     name: "Boxmate",
     tagline: "Multi-Platform B2C Product",
     category: "Full Stack · Mobile · Web",
+    image: boxmateImg,
     description:
-      "A live B2C product with multiple product surfaces: a Host App, Client Web interface, and Admin Dashboard. Built cross-platform mobile experiences and responsive web interfaces, integrating backend APIs across all surfaces.",
+      "Live B2C product with Host App, Client Web, and Admin Dashboard. Built cross-platform mobile (iOS & Android) and responsive web interfaces with API integrations.",
     role: "Full Stack Developer",
     contribution: "React Native mobile app, Next.js web interfaces, API integration, responsive design",
     tags: [
@@ -145,8 +147,9 @@ export const projects = [
     name: "Assetyzer",
     tagline: "Asset Management & Billing Platform",
     category: "Asset Management · Billing · Full Stack",
+    image: assetyzerImg,
     description:
-      "An asset management and billing platform built with SvelteKit, featuring reactive UI architecture, billing integration, and backend API connectivity. Focused on clean data flows and a maintainable frontend architecture.",
+      "Asset management and billing platform built with SvelteKit. Reactive UI, billing integration, asset lifecycle tracking, and clean backend API connectivity.",
     role: "Full Stack Developer",
     contribution: "SvelteKit frontend, billing integration, API integration, reactive UI architecture",
     tags: [
@@ -166,28 +169,28 @@ export const projects = [
     featured: false,
   },
   {
-    name: "Open Run — Stablecoin Platform",
-    tagline: "1st Place · 64 Teams · 48 Hours",
-    category: "Hackathon · Blockchain · Blockchain",
+    name: "Asset21 Overlay Service",
+    tagline: "Bitcoin SV Token Management & Overlay Service",
+    category: "Blockchain · Go · Bitcoin SV",
+    image: openrunImg,
     description:
-      "Built a stablecoin platform in 48 hours during the Open Run Hackathon, enabling users to mint, transfer, and manage Blockchainbacked stable digital assets. Won 1st place in Track 3 among 64 competing teams.",
-    role: "Builder",
-    contribution: "Full product: frontend, smart contracts, Blockchain integration",
+      "A Bitcoin SV overlay service for Asset21 custom tokens. Parses and validates token inscriptions, manages dynamic topics, and persists UTXO state using MongoDB.",
+    role: "Blockchain Developer",
+    contribution: "Token inscription parser, UTXO validation, dynamic topic management, MongoDB persistence",
     tags: [
-      { name: "React", color: "blue-text-gradient" },
-      { name: "TypeScript", color: "green-text-gradient" },
-      { name: "Blockchain", color: "orange-text-gradient" },
-      { name: "Smart Contracts", color: "pink-text-gradient" },
+      { name: "Go", color: "blue-text-gradient" },
+      { name: "Bitcoin SV", color: "orange-text-gradient" },
+      { name: "MongoDB", color: "green-text-gradient" },
+      { name: "Docker", color: "pink-text-gradient" },
     ],
     highlights: [
-      "🏆 1st Place — Track 3",
-      "64 competing teams",
-      "Built in 48 hours",
-      "Mint · Transfer · Manage Blockchain assets",
-      "Full-stack: React + TypeScript + Blockchain",
+      "Asset21 token recognition & inscription validation",
+      "Dynamic token topic management (engine.TopicManager)",
+      "Persistent UTXO state & metadata storage in MongoDB",
+      "Transaction processing in BEEF format",
     ],
     live_link: "https://stablecoin-tcl.vercel.app/",
-    github_link: null,
+    github_link: "https://github.com/shainilps/asset21-overlay",
     featured: true,
     hackathon: true,
     achievement: "1st Place / 64 Teams",
@@ -196,8 +199,9 @@ export const projects = [
     name: "News Factory",
     tagline: "Decentralized Blockchain News Portal",
     category: "Blockchain · Full Stack",
+    image: newsfactoryImg,
     description:
-      "A full-stack decentralized news portal on the Blockchain with smart contract-driven wallet and subscription management, using SvelteKit, TypeScript, PostgreSQL, and Neucron Wallet.",
+      "Decentralized news portal with smart contract-driven subscriptions and Neucron Wallet integration. Built with SvelteKit, TypeScript, and PostgreSQL.",
     role: "Developer",
     contribution: "Full-stack development, Blockchain integration, smart contracts",
     tags: [
@@ -220,8 +224,9 @@ export const projects = [
     name: "ICO Marketplace",
     tagline: "Decentralized Token Launch Platform",
     category: "Blockchain · DeFi · Ethereum",
+    image: icoImg,
     description:
-      "A decentralized ICO platform on Ethereum for token sales and fundraising. Built with Solidity smart contracts and Ethers.js for transparent, secure token launches.",
+      "Decentralized ICO platform on Ethereum for token sales and fundraising. Built with Solidity smart contracts and Ethers.js for transparent token launches.",
     role: "Blockchain Developer",
     contribution: "Smart contracts, Ethers.js frontend integration",
     tags: [
@@ -237,15 +242,16 @@ export const projects = [
       "DeFi transparency",
     ],
     live_link: null,
-    github_link: "https://github.com/BhavsarShubham/ICO_Market",
+    github_link: "https://github.com/BhavsarShubham/liquidity_market_place",
     featured: false,
   },
   {
     name: "Supply Chain",
     tagline: "Provenance Tracking on Ethereum",
     category: "Blockchain · Ethereum · Full Stack",
+    image: supplychainImg,
     description:
-      "A blockchain-based supply chain management system on Ethereum to track goods' provenance in real time. Uses smart contracts for automated verification and fraud prevention, with a React.js interface and Web3.js integration.",
+      "Blockchain supply chain system on Ethereum for real-time goods provenance tracking. Smart contracts for automated fraud prevention with Web3.js and React.js.",
     role: "Blockchain Developer",
     contribution: "Smart contracts, Web3.js integration, React.js frontend",
     tags: [
@@ -261,7 +267,7 @@ export const projects = [
       "Web3.js blockchain interaction",
     ],
     live_link: null,
-    github_link: "https://github.com/BhavsarShubham/SHUBHAM_supply_chain_manage",
+    github_link: "https://github.com/BhavsarShubham/ProofTrack",
     featured: false,
   },
 ];

@@ -26,6 +26,18 @@ const HackathonCard = ({ project }) => (
     {/* Glow */}
     <div className="absolute inset-0 bg-gradient-to-r from-amber-500/5 via-transparent to-indigo-500/5 pointer-events-none" aria-hidden="true" />
 
+    {/* Project Image Banner */}
+    {project.image && (
+      <div className="relative w-full h-52 overflow-hidden">
+        <img
+          src={project.image}
+          alt={`${project.name} preview`}
+          className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0d0d1a]" />
+      </div>
+    )}
+
     <div className="relative p-8 md:p-10">
       {/* Badge */}
       <div className="flex flex-wrap items-center gap-3 mb-6">
@@ -63,7 +75,19 @@ const HackathonCard = ({ project }) => (
           </div>
 
           {/* Links */}
-          <div className="flex gap-3 mt-6">
+          <div className="flex flex-wrap gap-3 mt-6">
+            {project.live_link && (
+              <a
+                href={project.live_link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[13px] font-medium hover:bg-amber-500/30 transition-all duration-200"
+                aria-label={`Live demo for ${project.name}`}
+              >
+                <ExternalIcon />
+                Live Demo
+              </a>
+            )}
             {project.github_link && (
               <a
                 href={project.github_link}
@@ -125,69 +149,83 @@ const HackathonCard = ({ project }) => (
 const ProjectCard = ({ project, index }) => (
   <motion.div
     variants={fadeIn("up", "spring", index * 0.1, 0.6)}
-    className="project-card rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-indigo-500/30 p-6 flex flex-col"
+    className="project-card rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-indigo-500/30 overflow-hidden flex flex-col"
     aria-label={`Project: ${project.name}`}
   >
-    <div className="flex items-start justify-between gap-3 mb-3">
-      <div>
-        <span className="text-[11px] font-mono text-indigo-400 uppercase tracking-wider">
-          {project.category}
-        </span>
-        <h3 className="text-white text-[20px] font-bold mt-1 leading-tight">
-          {project.name}
-        </h3>
-        <p className="text-[#aaa6c3] text-[13px] mt-0.5 font-mono">{project.tagline}</p>
+    {/* Project Image */}
+    {project.image && (
+      <div className="relative w-full h-44 overflow-hidden bg-[#0d0d1a]">
+        <img
+          src={project.image}
+          alt={`${project.name} preview`}
+          className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#050816]/80" />
       </div>
-      <div className="flex gap-2 shrink-0">
-        {project.github_link && (
-          <a
-            href={project.github_link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-8 h-8 rounded-lg border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:border-white/30 transition-all duration-200"
-            aria-label={`GitHub for ${project.name}`}
-          >
-            <GitHubIcon />
-          </a>
-        )}
-        {project.live_link && (
-          <a
-            href={project.live_link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-8 h-8 rounded-lg border border-white/10 flex items-center justify-center text-white/50 hover:text-indigo-400 hover:border-indigo-500/40 transition-all duration-200"
-            aria-label={`Live demo for ${project.name}`}
-          >
-            <ExternalIcon />
-          </a>
-        )}
-      </div>
-    </div>
+    )}
 
-    <p className="text-[#aaa6c3] text-[14px] leading-relaxed mb-4 flex-1">
-      {project.description}
-    </p>
-
-    {/* Highlights */}
-    <div className="space-y-1.5 mb-4">
-      {project.highlights?.slice(0, 3).map((h, i) => (
-        <div key={i} className="flex items-center gap-2 text-[12px] text-[#aaa6c3]">
-          <span className="text-indigo-400 font-mono shrink-0">›</span>
-          {h}
+    <div className="p-6 flex flex-col flex-1">
+      <div className="flex items-start justify-between gap-3 mb-3">
+        <div>
+          <span className="text-[11px] font-mono text-indigo-400 uppercase tracking-wider">
+            {project.category}
+          </span>
+          <h3 className="text-white text-[20px] font-bold mt-1 leading-tight">
+            {project.name}
+          </h3>
+          <p className="text-[#aaa6c3] text-[13px] mt-0.5 font-mono">{project.tagline}</p>
         </div>
-      ))}
-    </div>
+        <div className="flex gap-2 shrink-0">
+          {project.github_link && (
+            <a
+              href={project.github_link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 rounded-lg border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:border-white/30 transition-all duration-200"
+              aria-label={`GitHub for ${project.name}`}
+            >
+              <GitHubIcon />
+            </a>
+          )}
+          {project.live_link && (
+            <a
+              href={project.live_link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 rounded-lg border border-white/10 flex items-center justify-center text-white/50 hover:text-indigo-400 hover:border-indigo-500/40 transition-all duration-200"
+              aria-label={`Live demo for ${project.name}`}
+            >
+              <ExternalIcon />
+            </a>
+          )}
+        </div>
+      </div>
 
-    {/* Tags */}
-    <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/[0.06]">
-      {project.tags.slice(0, 4).map((tag) => (
-        <span
-          key={tag.name}
-          className="px-2.5 py-0.5 rounded-md bg-white/[0.04] border border-white/[0.06] text-[11px] text-[#aaa6c3] font-mono"
-        >
-          {tag.name}
-        </span>
-      ))}
+      <p className="text-[#aaa6c3] text-[13px] leading-relaxed mb-4 line-clamp-2">
+        {project.description}
+      </p>
+
+      {/* Highlights */}
+      <div className="space-y-1.5 mb-4 flex-1">
+        {project.highlights?.slice(0, 3).map((h, i) => (
+          <div key={i} className="flex items-center gap-2 text-[12px] text-[#aaa6c3]">
+            <span className="text-indigo-400 font-mono shrink-0">›</span>
+            {h}
+          </div>
+        ))}
+      </div>
+
+      {/* Tags */}
+      <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/[0.06]">
+        {project.tags.slice(0, 4).map((tag) => (
+          <span
+            key={tag.name}
+            className="px-2.5 py-0.5 rounded-md bg-white/[0.04] border border-white/[0.06] text-[11px] text-[#aaa6c3] font-mono"
+          >
+            {tag.name}
+          </span>
+        ))}
+      </div>
     </div>
   </motion.div>
 );
