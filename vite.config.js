@@ -10,13 +10,23 @@ export default defineConfig({
   },
   build: {
     // Increase chunk size warning limit to avoid noise from Three.js
-    // chunkSizeWarningLimit: 2000,
+    chunkSizeWarningLimit: 1600,
     rollupOptions: {
       output: {
         // Split large vendor chunks for faster loading
-        manualChunks: {
-          'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
-          'framer-motion': ['framer-motion'],
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (
+              id.includes('three') ||
+              id.includes('@react-three/fiber') ||
+              id.includes('@react-three/drei')
+            ) {
+              return 'three-vendor'
+            }
+            if (id.includes('framer-motion')) {
+              return 'framer-motion'
+            }
+          }
         },
       },
     },
