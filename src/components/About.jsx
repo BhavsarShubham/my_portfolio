@@ -1,3 +1,4 @@
+
 import React from "react";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
@@ -7,26 +8,22 @@ import { fadeIn, textVariant } from "../utils/motion";
 const pillars = [
   {
     label: "Full Stack",
-    desc: "End-to-end product delivery: frontend, backend, APIs, and mobile.",
-    icon: "⬡",
+    desc: "Building web applications, backend APIs, and complete product features from frontend to deployment.",
     color: "indigo",
   },
   {
     label: "Blockchain",
-    desc: "Blockchain wallets, smart contracts, and decentralized applications.",
-    icon: "⬡",
+    desc: "Developing blockchain integrations, wallet systems, smart contracts, and Web3 applications.",
     color: "emerald",
   },
   {
-    label: "Production",
-    desc: "Debugging live issues, owning features from scoping to deployment.",
-    icon: "⬡",
+    label: "Engineering",
+    desc: "Integrating APIs, writing automated tests, debugging production issues, and shipping reliable features.",
     color: "amber",
   },
   {
     label: "Mobile",
-    desc: "Cross-platform React Native apps targeting iOS and Android.",
-    icon: "⬡",
+    desc: "Building cross-platform React Native applications for iOS and Android.",
     color: "purple",
   },
 ];
@@ -58,100 +55,166 @@ const colorMap = {
   },
 };
 
+const journey = [
+  {
+    year: "2020",
+    event: "Started BCA — North Maharashtra University",
+  },
+  {
+    year: "2023",
+    event: "Began MCA — Savitribai Phule Pune University",
+  },
+  {
+    year: "Jun '24",
+    event: "Joined Timechain Labs as a Summer Code Developer",
+  },
+  {
+    year: "Aug '24",
+    event: "Blockchain Developer Intern",
+  },
+  {
+    year: "Jun '25",
+    event: "Developer Intern — production feature delivery",
+  },
+  {
+    year: "Jan '26",
+    event: "Promoted to Software Developer (Full-time)",
+  },
+];
+
 const About = () => {
   return (
     <>
-      {/* Section header */}
+      {/* Section heading */}
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} text-indigo-400 font-mono`}>
+        <p className={`${styles.sectionSubText} font-mono text-indigo-400`}>
           // who I am
         </p>
-        <h2 className={`${styles.sectionHeadText}`}>About.</h2>
+        <h2 className={styles.sectionHeadText}>About.</h2>
       </motion.div>
 
-      {/* Summary */}
+      {/* Introduction and experience */}
       <motion.div
         variants={fadeIn("", "", 0.1, 1)}
-        className="mt-6 grid lg:grid-cols-2 gap-10"
+        className="mt-6 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12"
       >
         <div className="space-y-5">
-          <p className="text-[#aaa6c3] text-[17px] leading-[30px]">
-            Full Stack Developer with production experience building web and mobile
-            applications using{" "}
-            <span className="text-white font-medium">
-              React.js, Next.js, Node.js, and TypeScript
+
+          <p className="text-[16px] leading-[1.9] text-[#aaa6c3] sm:text-[17px]">
+            I'm a{" "}
+            <span className="font-medium text-white">
+              Full Stack Developer
             </span>{" "}
-            — with hands-on blockchain development experience building{" "}
-            <span className="text-indigo-300 font-medium">
-              Blockchain wallet systems and smart contracts
+            building web and mobile applications, with experience in{" "}
+            <span className="font-medium text-indigo-300">
+              n8n automation, software testing, and blockchain development
             </span>
-            .
-          </p>
-          <p className="text-[#aaa6c3] text-[17px] leading-[30px]">
-            I've worked across the full product stack: implementing features,
-            integrating production APIs, building cross-platform mobile apps,
-            writing automated tests, debugging live issues, and shipping features
-            end-to-end. Currently based in India, I build at the intersection
-            of modern web engineering and Web3.
+            , including wallets and smart contracts.
           </p>
 
-          {/* Location + Stack line */}
-          <div className="flex items-center gap-3 pt-2">
-            <div className="flex items-center gap-1.5 text-[13px] text-[#aaa6c3] font-mono">
-              <span className="text-emerald-400">📍</span>
+          <p className="text-[16px] leading-[1.9] text-[#aaa6c3] sm:text-[17px]">
+            My work spans the full development lifecycle — from implementing
+            features and integrating APIs to writing automated tests,
+            debugging production issues, and delivering software end to end.
+            I enjoy solving practical engineering problems and building
+            products that are reliable, maintainable, and useful.
+          </p>
+
+          {/* Location and focus */}
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 pt-1">
+            <span className="font-mono text-[13px] text-[#aaa6c3]">
+              <span className="mr-1.5 text-emerald-400">📍</span>
               India
-            </div>
+            </span>
+
             <span className="text-white/20">·</span>
-            <div className="flex items-center gap-1.5 text-[13px] text-[#aaa6c3] font-mono">
-              <span className="text-indigo-400">⚡</span>
+
+            <span className="font-mono text-[13px] text-[#aaa6c3]">
               Full Stack · Web3 · Mobile
-            </div>
+            </span>
+          </div>
+
+          {/* Professional links */}
+          <div className="flex flex-wrap gap-3 pt-3">
+            <a
+              href="#projects"
+              className="inline-flex items-center gap-2 rounded-lg
+                bg-indigo-500 px-4 py-2.5 text-sm font-medium text-white
+                transition-colors hover:bg-indigo-400
+                focus-visible:outline-none focus-visible:ring-2
+                focus-visible:ring-indigo-400"
+            >
+              Explore my work
+              <span aria-hidden="true">↗</span>
+            </a>
+
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-lg
+                border border-white/15 px-4 py-2.5 text-sm
+                font-medium text-white transition-colors
+                hover:border-indigo-400/50 hover:text-indigo-300
+                focus-visible:outline-none focus-visible:ring-2
+                focus-visible:ring-indigo-400"
+            >
+              Discuss a project
+            </a>
           </div>
         </div>
 
-        {/* Engineering journey quick timeline */}
-        <div className="space-y-3">
-          <p className="text-[12px] font-mono text-white/40 uppercase tracking-wider mb-4">
+        {/* Engineering journey */}
+        <div>
+          <p className="mb-5 font-mono text-[12px] uppercase tracking-wider text-white/40">
             Engineering Journey
           </p>
-          {[
-            { year: "2020", event: "Started BCA — North Maharashtra University" },
-            { year: "2023", event: "Began MCA — Savitribai Phule Pune University" },
-            { year: "Jun '24", event: "Joined Timechain Labs (Summer Code Developer)" },
-            { year: "Aug '24", event: "Blockchain Developer Intern" },
-            { year: "Jun '25", event: "Developer Intern — production feature delivery" },
-            { year: "Jan '26", event: "Promoted to Software Developer (Full-time)" },
-          ].map((item, i) => (
-            <div key={i} className="flex items-start gap-3 group">
-              <span className="text-[12px] font-mono text-indigo-400 w-14 shrink-0 pt-0.5">
-                {item.year}
-              </span>
-              <div className="flex items-start gap-2.5 flex-1">
-                <div className="w-px h-full min-h-[20px] bg-indigo-500/30 shrink-0 mt-1.5" />
-                <p className="text-[14px] text-[#aaa6c3] group-hover:text-white transition-colors leading-snug">
-                  {item.event}
-                </p>
-              </div>
-            </div>
-          ))}
+
+          <ol className="space-y-4">
+            {journey.map((item, i) => (
+              <motion.li
+                key={`${item.year}-${item.event}`}
+                variants={fadeIn("right", "spring", i * 0.08, 0.45)}
+                className="grid grid-cols-[64px_1fr] gap-3"
+              >
+                <span className="pt-0.5 font-mono text-[12px] text-indigo-400">
+                  {item.year}
+                </span>
+
+                <div className="border-l border-indigo-500/30 pl-3">
+                  <p className="text-[14px] leading-relaxed text-[#aaa6c3] transition-colors hover:text-white">
+                    {item.event}
+                  </p>
+                </div>
+              </motion.li>
+            ))}
+          </ol>
         </div>
       </motion.div>
 
-      {/* Pillar cards */}
-      <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {pillars.map((p, i) => {
-          const c = colorMap[p.color];
+      {/* Areas of expertise */}
+      <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {pillars.map((pillar, i) => {
+          const c = colorMap[pillar.color];
+
           return (
             <motion.div
-              key={p.label}
-              variants={fadeIn("up", "spring", i * 0.15, 0.6)}
-              className={`rounded-xl p-5 border ${c.border} ${c.bg} hover:scale-[1.02] transition-all duration-300 cursor-default`}
+              key={pillar.label}
+              variants={fadeIn("up", "spring", i * 0.12, 0.6)}
+              className={`rounded-xl border p-5 ${c.border} ${c.bg}
+                transition-transform duration-300
+                hover:-translate-y-1`}
             >
-              <div className={`w-2 h-2 rounded-full ${c.dot} mb-3`} />
-              <h3 className={`text-[15px] font-bold ${c.text} mb-1.5`}>
-                {p.label}
+              <div
+                className={`mb-3 h-2 w-2 rounded-full ${c.dot}`}
+                aria-hidden="true"
+              />
+
+              <h3 className={`mb-2 text-[15px] font-bold ${c.text}`}>
+                {pillar.label}
               </h3>
-              <p className="text-[#aaa6c3] text-[13px] leading-snug">{p.desc}</p>
+
+              <p className="text-[13px] leading-relaxed text-[#aaa6c3]">
+                {pillar.desc}
+              </p>
             </motion.div>
           );
         })}

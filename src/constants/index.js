@@ -9,6 +9,7 @@ export const navLinks = [
   { id: "contact", title: "Contact" },
 ];
 
+
 export const experiences = [
   {
     title: "Software Developer",
@@ -19,15 +20,12 @@ export const experiences = [
     location: "Hyderabad, Telangana, India · Remote",
     type: "full-time",
     points: [
-      "Delivered full-stack features for the Neucron blockchain wallet console, working across frontend and backend layers.",
-      "Built responsive UI components using React.js, Next.js, and TypeScript for wallet operations and asset management.",
-      "Integrated 10+ RESTful APIs connecting frontend interfaces to blockchain backend services.",
-      "Developed cross-platform mobile functionality using React Native, targeting iOS and Android.",
-      "Built and maintained a reusable component library to accelerate feature development across the platform.",
-      "Worked on digital certificate functionality and ticketing modules within the console.",
-      "Debugged and resolved production issues, maintaining feature stability in a live blockchain environment.",
-      "Owned feature delivery end-to-end: from scoping and implementation through deployment.",
-      "Leveraged AI-assisted development tools including Claude and GitHub Copilot alongside manual code review.",
+      "Developed full-stack features for the Neucron blockchain wallet console.",
+      "Built responsive interfaces using React, Next.js, and TypeScript.",
+      "Integrated 10+ REST APIs with blockchain backend services.",
+      "Developed cross-platform mobile features using React Native.",
+      "Implemented digital certificate and ticketing functionality.",
+      "Maintained reusable components and resolved production issues.",
     ],
   },
   {
@@ -40,39 +38,12 @@ export const experiences = [
     type: "internship",
     promoted: true,
     points: [
-      "Built responsive web pages from Figma designs using React.js and TailwindCSS.",
-      "Developed reusable component libraries following design system standards.",
-      "Wrote automated test suites using Mocha and Chai for frontend and API layers.",
-      "Performed manual regression testing and API testing to ensure feature quality.",
-      "Collaborated closely with design and backend teams to align implementation with product requirements.",
-      "Worked toward production feature delivery within an agile team environment.",
-      "Received a full-time offer within 6 months of joining as an intern.",
-    ],
-  },
-  {
-    title: "Blockchain Developer Intern",
-    company_name: "Timechain Labs",
-    icon: timechain,
-    iconBg: "#1a1a2e",
-    date: "August 2024 – September 2024",
-    location: "Remote",
-    type: "internship",
-    points: [
-      "Contributed to Blockchain blockchain development projects.",
-      "Explored smart contract development and wallet integration patterns.",
-    ],
-  },
-  {
-    title: "Summer Code Developer",
-    company_name: "Timechain Labs",
-    icon: timechain,
-    iconBg: "#1a1a2e",
-    date: "June 2024 – September 2024",
-    location: "Remote",
-    type: "program",
-    points: [
-      "Participated in a structured development program building blockchain-related projects.",
-      "Collaborated with engineering teams on product development tasks.",
+      "Built responsive interfaces using React and Tailwind CSS.",
+      "Developed reusable UI components from Figma designs.",
+      "Created automated tests using Mocha and Chai.",
+      "Performed API testing and regression testing to ensure quality.",
+      "Collaborated with design and backend teams on feature delivery.",
+      "Earned a full-time offer following the internship.",
     ],
   },
   {
@@ -84,11 +55,39 @@ export const experiences = [
     location: "India",
     type: "ambassador",
     points: [
-      "Represented Timechain Labs within the academic community.",
+      "Represented Timechain Labs within the student community.",
       "Promoted blockchain awareness and engineering initiatives among students.",
     ],
   },
+  {
+    title: "Blockchain Developer Intern",
+    company_name: "Timechain Labs",
+    icon: timechain,
+    iconBg: "#1a1a2e",
+    date: "August 2024 – September 2024",
+    location: "Remote",
+    type: "internship",
+    points: [
+      "Contributed to blockchain development projects.",
+      "Explored smart contract concepts and wallet integration.",
+    ],
+  },
+  {
+    title: "Summer Code Developer",
+    company_name: "Timechain Labs",
+    icon: timechain,
+    iconBg: "#1a1a2e",
+    date: "June 2024 – September 2024",
+    location: "Remote",
+    type: "program",
+    points: [
+      "Contributed to blockchain-related projects.",
+      "Collaborated with engineering teams on development tasks.",
+    ],
+  },
 ];
+
+
 
 export const projects = [
   {

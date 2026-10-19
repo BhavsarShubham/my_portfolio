@@ -1,107 +1,140 @@
+
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { styles } from "../styles";
 import { experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { textVariant, fadeIn } from "../utils/motion";
 
 const typeColors = {
-  "full-time": { label: "Full-time", bg: "bg-indigo-500/15", text: "text-indigo-300", border: "border-indigo-500/30" },
-  internship: { label: "Internship", bg: "bg-emerald-500/15", text: "text-emerald-300", border: "border-emerald-500/30" },
-  program: { label: "Program", bg: "bg-amber-500/15", text: "text-amber-300", border: "border-amber-500/30" },
-  ambassador: { label: "Ambassador", bg: "bg-purple-500/15", text: "text-purple-300", border: "border-purple-500/30" },
+  "full-time": {
+    label: "Full-time",
+    style: "bg-indigo-500/10 text-indigo-300 border-indigo-500/20",
+  },
+  internship: {
+    label: "Internship",
+    style: "bg-emerald-500/10 text-emerald-300 border-emerald-500/20",
+  },
+  program: {
+    label: "Program",
+    style: "bg-amber-500/10 text-amber-300 border-amber-500/20",
+  },
+  ambassador: {
+    label: "Ambassador",
+    style: "bg-purple-500/10 text-purple-300 border-purple-500/20",
+  },
 };
 
 const ExperienceCard = ({ experience, index, isActive, onClick }) => {
-  const tc = typeColors[experience.type] || typeColors["full-time"];
+  const type =
+    typeColors[experience.type] || typeColors["full-time"];
+
   return (
     <motion.div
-      variants={fadeIn("up", "spring", index * 0.1, 0.6)}
-      className={`relative cursor-pointer rounded-2xl border transition-all duration-400 overflow-hidden ${
-        isActive
-          ? "border-indigo-500/50 bg-[#151030]/80"
-          : "border-white/[0.06] bg-white/[0.02] hover:border-white/10"
-      }`}
-      onClick={onClick}
-    >
-      {/* Accent bar */}
-      <div
-        className={`absolute left-0 top-0 h-full w-0.5 transition-all duration-300 ${
-          isActive ? "bg-gradient-to-b from-indigo-500 to-emerald-500 opacity-100" : "bg-white/10 opacity-50"
+      layout
+      variants={fadeIn("up", "tween", index * 0.06, 0.35)}
+      className={`relative overflow-hidden rounded-xl border transition-colors duration-300 ${isActive
+          ? "border-indigo-500/30 bg-[#151030]/60"
+          : "border-white/[0.07] bg-white/[0.02] hover:border-white/15"
         }`}
+    >
+      {/* Active accent */}
+      <div
+        className={`absolute inset-y-0 left-0 w-[2px] transition-colors ${isActive ? "bg-indigo-400" : "bg-transparent"
+          }`}
       />
 
-      <div className="px-6 py-5">
-        <div className="flex items-start justify-between gap-4">
-          <div className="flex items-center gap-4">
-            {/* Company logo */}
-            <div className="w-10 h-10 rounded-xl bg-[#1a1a2e] border border-white/10 flex items-center justify-center shrink-0 overflow-hidden">
-              <img
-                src={experience.icon}
-                alt={experience.company_name}
-                className="w-7 h-7 object-contain"
-              />
-            </div>
-            <div>
-              <h3 className="text-white text-[16px] font-semibold leading-tight">
-                {experience.title}
-              </h3>
-              <p className="text-indigo-400 text-[13px] mt-0.5 font-medium">
-                {experience.company_name}
-              </p>
-            </div>
+      <button
+        type="button"
+        onClick={onClick}
+        aria-expanded={isActive}
+        className="w-full px-4 py-4 text-left sm:px-5"
+      >
+        <div className="flex items-center gap-3">
+          {/* Company logo */}
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-white/10 bg-[#1a1a2e]">
+            <img
+              src={experience.icon}
+              alt={`${experience.company_name} logo`}
+              className="h-7 w-7 object-contain"
+              loading="lazy"
+            />
           </div>
-          <div className="flex flex-col items-end gap-1.5 shrink-0">
-            <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium border ${tc.bg} ${tc.text} ${tc.border}`}>
-              {tc.label}
+
+          {/* Role and company */}
+          <div className="min-w-0 flex-1">
+            <h3 className="text-sm font-semibold leading-snug text-white sm:text-[15px]">
+              {experience.title}
+            </h3>
+
+            <p className="mt-1 truncate text-xs text-indigo-300">
+              {experience.company_name}
+            </p>
+          </div>
+
+          {/* Type and expand indicator */}
+          <div className="flex shrink-0 flex-col items-end gap-2">
+            <span
+              className={`rounded-full border px-2 py-0.5 text-[10px] ${type.style}`}
+            >
+              {type.label}
             </span>
-            {experience.promoted && (
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-amber-500/15 text-amber-300 border border-amber-500/30">
-                ↑ Promoted
-              </span>
-            )}
+
+            <motion.span
+              animate={{ rotate: isActive ? 180 : 0 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="text-xs text-white/40"
+            >
+              ↓
+            </motion.span>
           </div>
         </div>
 
-        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
-          <span className="text-[12px] text-[#aaa6c3] font-mono">{experience.date}</span>
+        <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 pl-[52px] text-[11px] text-[#aaa6c3]">
+          <span className="font-mono">{experience.date}</span>
+
           {experience.location && (
             <>
               <span className="text-white/20">·</span>
-              <span className="text-[12px] text-[#aaa6c3]">{experience.location}</span>
+              <span>{experience.location}</span>
             </>
           )}
-        </div>
 
-        {/* Expand indicator */}
-        <div className="flex items-center gap-1 mt-3">
-          <span className={`text-[11px] font-mono transition-colors ${isActive ? "text-indigo-400" : "text-white/30"}`}>
-            {isActive ? "— collapse" : "+ expand"}
-          </span>
+          {experience.promoted && (
+            <span className="text-amber-300">· Promoted</span>
+          )}
         </div>
-      </div>
+      </button>
 
-      {/* Expanded points */}
-      {isActive && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
-          className="px-6 pb-6"
-        >
-          <div className="border-t border-white/[0.06] pt-4">
-            <ul className="space-y-2.5">
-              {experience.points.map((point, i) => (
-                <li key={i} className="flex items-start gap-3 text-[14px] text-[#aaa6c3] leading-relaxed">
-                  <span className="text-indigo-400 mt-1 shrink-0 font-mono">›</span>
-                  {point}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </motion.div>
-      )}
+      <AnimatePresence initial={false}>
+        {isActive && (
+          <motion.div
+            key="details"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{
+              height: { duration: 0.28, ease: "easeInOut" },
+              opacity: { duration: 0.2, ease: "easeOut" },
+            }}
+            className="overflow-hidden"
+          >
+            <div className="mx-4 border-t border-white/[0.07] px-1 pb-4 pt-3 sm:mx-5">
+              <ul className="space-y-2">
+                {experience.points.map((point, i) => (
+                  <li
+                    key={`${experience.company_name}-${i}`}
+                    className="flex items-start gap-2.5 text-[13px] leading-relaxed text-[#aaa6c3]"
+                  >
+                    <span className="mt-0.5 text-indigo-400">›</span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };
@@ -112,42 +145,34 @@ const Experience = () => {
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} text-indigo-400 font-mono`}>
+        <p className={`${styles.sectionSubText} font-mono text-indigo-400`}>
           // where I've worked
         </p>
         <h2 className={styles.sectionHeadText}>Experience.</h2>
       </motion.div>
 
-      {/* Timeline indicator */}
       <motion.div
-        variants={fadeIn("", "", 0.1, 1)}
-        className="mt-3 flex items-center gap-2 text-[13px] text-[#aaa6c3]"
+        variants={fadeIn("", "tween", 0.1, 0.4)}
+        className="mt-8 space-y-3"
       >
-        <span className="font-mono text-indigo-400">Timechain Labs</span>
-        <span className="text-white/20">·</span>
-        <span>June 2024 → April 2026</span>
-        <span className="text-white/20">·</span>
-        <span className="text-emerald-400 font-mono">Intern → Full-time</span>
-      </motion.div>
-
-      <div className="mt-10 space-y-4">
         {experiences.map((exp, i) => (
           <ExperienceCard
-            key={i}
+            key={`${exp.company_name}-${exp.title}-${i}`}
             experience={exp}
             index={i}
             isActive={activeIndex === i}
-            onClick={() => setActiveIndex(activeIndex === i ? -1 : i)}
+            onClick={() =>
+              setActiveIndex((current) => (current === i ? -1 : i))
+            }
           />
         ))}
-      </div>
+      </motion.div>
 
-      {/* Note */}
       <motion.p
-        variants={fadeIn("", "", 0.4, 1)}
-        className="mt-6 text-[12px] text-white/30 font-mono"
+        variants={fadeIn("", "tween", 0.2, 0.4)}
+        className="mt-4 text-[11px] text-white/30"
       >
-        // Click any card to expand responsibilities
+        Select an experience to view responsibilities.
       </motion.p>
     </>
   );

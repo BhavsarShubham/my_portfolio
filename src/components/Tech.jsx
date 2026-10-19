@@ -35,6 +35,8 @@ const Tech = () => {
       </motion.p>
 
       {/* Category tabs */}
+
+      {/* Category tabs */}
       <motion.div
         variants={fadeIn("", "", 0.2, 1)}
         className="mt-8 flex flex-wrap gap-2"
@@ -42,27 +44,34 @@ const Tech = () => {
         aria-label="Technology categories"
       >
         <button
+          type="button"
           role="tab"
           aria-selected={activeCategory === null}
           onClick={() => setActiveCategory(null)}
-          className={`px-4 py-2 rounded-lg text-[13px] font-medium transition-all duration-200 border ${activeCategory === null
-            ? "bg-indigo-500/20 border-indigo-500/40 text-indigo-300"
-            : "border-white/[0.08] text-[#aaa6c3] hover:border-white/20 hover:text-white"
+          className={`px-4 py-2 rounded-lg text-[13px] font-medium
+      transition-all duration-200 border ${activeCategory === null
+              ? "bg-indigo-500/20 border-indigo-500/40 text-indigo-300"
+              : "border-white/[0.08] text-[#aaa6c3] hover:border-white/20 hover:text-white"
             }`}
         >
           All
         </button>
+
         {skillCategories.map((cat) => {
-          const c = colorMap[cat.color];
+          const c = colorMap[cat.color] || colorMap["#6366f1"];
+          const isActive = activeCategory === cat.name;
+
           return (
             <button
               key={cat.name}
+              type="button"
               role="tab"
-              aria-selected={activeCategory === cat.name}
-              onClick={() => setActiveCategory(cat.name === activeCategory ? null : cat.name)}
-              className={`px-4 py-2 rounded-lg text-[13px] font-medium transition-all duration-200 border ${activeCategory === cat.name
-                ? `${c.bg} ${c.border} ${c.text}`
-                : "border-white/[0.08] text-[#aaa6c3] hover:border-white/20 hover:text-white"
+              aria-selected={isActive}
+              onClick={() => setActiveCategory(cat.name)}
+              className={`px-4 py-2 rounded-lg text-[13px] font-medium
+          transition-all duration-200 border ${isActive
+                  ? `${c.bg} ${c.border} ${c.text}`
+                  : "border-white/[0.08] text-[#aaa6c3] hover:border-white/20 hover:text-white"
                 }`}
             >
               {cat.name}
@@ -71,31 +80,57 @@ const Tech = () => {
         })}
       </motion.div>
 
+
+      {/* Skills grid */}
+
       {/* Skills grid */}
       <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {skillCategories
-          .filter((cat) => !activeCategory || cat.name === activeCategory)
+          .filter((cat) => activeCategory === null || cat.name === activeCategory)
           .map((cat, i) => {
-            const c = colorMap[cat.color];
+            const c = colorMap[cat.color] || colorMap["#6366f1"];
+
             return (
               <motion.div
                 key={cat.name}
-                variants={fadeIn("up", "spring", i * 0.1, 0.6)}
-                className={`rounded-2xl border p-6 ${c.border} ${c.bg} transition-all duration-300`}
-                role="region"
-                aria-label={`${cat.name} technologies`}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: 12,
+                    scale: 0.98,
+                  },
+                  show: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: {
+                      duration: 0.35,
+                      ease: "easeOut",
+                      delay: i * 0.06,
+                    },
+                  },
+                }}
+                initial="hidden"
+                animate="show"
+                className={`rounded-2xl border p-6 ${c.border} ${c.bg} transition-colors duration-300`}
               >
                 <div className="flex items-center gap-2 mb-4">
-                  <div className={`w-2 h-2 rounded-full`} style={{ backgroundColor: cat.color }} />
+                  <div
+                    className="w-2 h-2 rounded-full"
+                    style={{ backgroundColor: cat.color || "#6366f1" }}
+                  />
+
                   <h3 className={`text-[15px] font-bold ${c.text} font-mono`}>
                     {cat.name}
                   </h3>
                 </div>
+
                 <div className="flex flex-wrap gap-2">
                   {cat.skills.map((skill) => (
                     <span
                       key={skill}
-                      className={`skill-tag px-2.5 py-1 rounded-lg border text-[12px] font-medium cursor-default ${c.tag}`}
+                      className={`skill-tag px-2.5 py-1 rounded-lg border
+                  text-[12px] font-medium cursor-default ${c.tag}`}
                     >
                       {skill}
                     </span>
@@ -105,6 +140,7 @@ const Tech = () => {
             );
           })}
       </div>
+
 
       {/* Primary tech highlight */}
       <motion.div
