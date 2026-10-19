@@ -73,26 +73,24 @@ const CertIcons = {
 
 /* colour palette per icon key */
 const iconStyles = {
-  trophy:     { bg: "bg-amber-500/15",  border: "border-amber-500/40",  text: "text-amber-400"  },
+  trophy: { bg: "bg-amber-500/15", border: "border-amber-500/40", text: "text-amber-400" },
   blockchain: { bg: "bg-indigo-500/15", border: "border-indigo-500/40", text: "text-indigo-400" },
-  aws:        { bg: "bg-orange-500/15", border: "border-orange-500/40", text: "text-orange-400" },
-  bootcamp:   { bg: "bg-purple-500/15", border: "border-purple-500/40", text: "text-purple-400" },
-  ai:         { bg: "bg-pink-500/15",   border: "border-pink-500/40",   text: "text-pink-400"   },
-  bitcoin:    { bg: "bg-amber-500/15",  border: "border-amber-500/40",  text: "text-amber-400"  },
-  java:       { bg: "bg-red-500/15",    border: "border-red-500/40",    text: "text-red-400"    },
-  cpp:        { bg: "bg-blue-500/15",   border: "border-blue-500/40",   text: "text-blue-400"   },
+  aws: { bg: "bg-orange-500/15", border: "border-orange-500/40", text: "text-orange-400" },
+  bootcamp: { bg: "bg-purple-500/15", border: "border-purple-500/40", text: "text-purple-400" },
+  ai: { bg: "bg-pink-500/15", border: "border-pink-500/40", text: "text-pink-400" },
+  bitcoin: { bg: "bg-amber-500/15", border: "border-amber-500/40", text: "text-amber-400" },
+  java: { bg: "bg-red-500/15", border: "border-red-500/40", text: "text-red-400" },
+  cpp: { bg: "bg-blue-500/15", border: "border-blue-500/40", text: "text-blue-400" },
 };
 
 /* ─────────────────────────────────────────
    Certificate preview popup
 ───────────────────────────────────────── */
-const CertModal = ({ item, onClose }) => {
-  if (!item) return null;
 
+const CertModal = ({ item, onClose }) => {
   const IconComp = CertIcons[item.icon] || CertIcons.blockchain;
   const style = iconStyles[item.icon] || iconStyles.blockchain;
 
-  // Convert the Google Drive view URL to an embed URL
   const embedUrl = item.certLink
     ? item.certLink.replace("/view", "/preview")
     : null;
@@ -100,7 +98,7 @@ const CertModal = ({ item, onClose }) => {
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8"
+        className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-6 overflow-y-auto overscroll-contain"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -110,87 +108,108 @@ const CertModal = ({ item, onClose }) => {
         aria-label={`Certificate: ${item.title}`}
       >
         {/* Backdrop */}
-        <div className="absolute inset-0 bg-black/80 backdrop-blur-md" aria-hidden="true" />
+        <div
+          className="fixed inset-0 bg-black/85 backdrop-blur-sm"
+          aria-hidden="true"
+        />
 
         {/* Modal panel */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.92, y: 20 }}
+          initial={{ opacity: 0, scale: 0.97, y: 12 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.92, y: 20 }}
-          transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          className="relative w-full max-w-3xl rounded-2xl border border-white/10 bg-[#0d0d1f] shadow-2xl overflow-hidden"
+          exit={{ opacity: 0, scale: 0.97, y: 12 }}
+          transition={{ duration: 0.2 }}
           onClick={(e) => e.stopPropagation()}
+          className="relative z-10 w-full max-w-3xl max-h-[calc(100dvh-1rem)] sm:max-h-[calc(100dvh-3rem)] flex flex-col rounded-xl sm:rounded-2xl border border-white/10 bg-[#0d0d1f] shadow-2xl overflow-hidden"
         >
-          {/* Header */}
-          <div className={`flex items-center gap-4 px-6 py-4 border-b border-white/[0.07] ${style.bg}`}>
-            <div className={`w-10 h-10 rounded-xl border flex items-center justify-center shrink-0 ${style.border} ${style.bg}`}>
+          {/* Sticky header: close button stays accessible */}
+          <div
+            className={`sticky top-0 z-20 flex items-center gap-2 sm:gap-4 px-3 py-3 sm:px-6 sm:py-4 border-b border-white/10 ${style.bg}`}
+          >
+            <div
+              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl border flex items-center justify-center shrink-0 ${style.border}`}
+            >
               <IconComp className={`w-5 h-5 ${style.text}`} />
             </div>
+
             <div className="flex-1 min-w-0">
-              <p className={`text-[13px] font-mono font-semibold ${style.text} uppercase tracking-wider`}>
+              <p
+                className={`text-[10px] sm:text-[13px] font-mono font-semibold ${style.text} uppercase tracking-wider`}
+              >
                 Certificate
               </p>
-              <h3 className="text-white font-bold text-[16px] leading-tight truncate">
+              <h3 className="text-white font-bold text-sm sm:text-base leading-tight truncate">
                 {item.title}
               </h3>
-              <p className="text-white/40 text-[12px] font-mono">{item.year} · {item.subtitle}</p>
+              <p className="text-white/50 text-[10px] sm:text-xs truncate">
+                {item.year} · {item.subtitle}
+              </p>
             </div>
-            <div className="flex items-center gap-2 shrink-0">
-              {/* Open in new tab */}
-              <a
-                href={item.certLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 text-white/60 text-[12px] font-mono hover:border-indigo-500/40 hover:text-indigo-300 transition-all duration-200"
-                aria-label="Open certificate in new tab"
+
+            <a
+              href={item.certLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:flex items-center px-3 py-2 rounded-lg border border-white/10 text-white/70 text-xs hover:text-white"
+            >
+              Open
+            </a>
+
+            <button
+              type="button"
+              onClick={onClose}
+              className="w-10 h-10 shrink-0 rounded-lg border border-white/20 flex items-center justify-center text-white hover:bg-white/10 active:scale-95"
+              aria-label="Close certificate preview"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
               >
-                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-                Open
-              </a>
-              {/* Close */}
-              <button
-                onClick={onClose}
-                className="w-8 h-8 rounded-lg border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:border-white/30 transition-all duration-200"
-                aria-label="Close certificate preview"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
           </div>
 
-          {/* Google Drive iframe embed */}
-          <div className="relative w-full" style={{ height: "min(70vh, 540px)" }}>
+          {/* Responsive certificate preview */}
+          <div className="relative w-full h-[55dvh] min-h-[220px] max-h-[540px] shrink-0 bg-[#11111f]">
             {embedUrl ? (
               <iframe
                 src={embedUrl}
-                className="w-full h-full border-0 bg-white/5"
+                className="w-full h-full border-0"
                 title={`${item.title} certificate`}
                 allow="autoplay"
                 loading="lazy"
               />
             ) : (
-              <div className="w-full h-full flex items-center justify-center">
-                <p className="text-white/40 text-[14px] font-mono">No preview available.</p>
+              <div className="w-full h-full flex items-center justify-center p-4">
+                <p className="text-white/50 text-sm">
+                  No preview available.
+                </p>
               </div>
             )}
           </div>
 
-          {/* Footer hint */}
-          <div className="px-6 py-3 border-t border-white/[0.06] flex justify-between items-center">
-            <p className="text-white/30 text-[11px] font-mono">
-              Press <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-white/50">Esc</kbd> or click outside to close
+          {/* Compact footer */}
+          <div className="shrink-0 px-3 py-3 sm:px-6 border-t border-white/10 flex items-center justify-between gap-3">
+            <p className="text-white/40 text-[10px] sm:text-xs">
+              Tap outside or press Esc to close
             </p>
+
             <a
               href={item.certLink}
               target="_blank"
               rel="noopener noreferrer"
-              className={`text-[12px] font-mono font-medium ${style.text} hover:underline`}
+              className={`text-xs font-medium ${style.text} hover:underline shrink-0`}
             >
-              View on Google Drive →
+              View certificate ↗
             </a>
           </div>
         </motion.div>
@@ -198,6 +217,7 @@ const CertModal = ({ item, onClose }) => {
     </AnimatePresence>
   );
 };
+
 
 /* ─────────────────────────────────────────
    Main section
@@ -214,6 +234,30 @@ const Achievements = () => {
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, []);
+
+
+  React.useEffect(() => {
+    if (!activeCert) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const previousPaddingRight = document.body.style.paddingRight;
+
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setActiveCert(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.body.style.paddingRight = previousPaddingRight;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeCert]);
 
   return (
     <>
@@ -255,7 +299,7 @@ const Achievements = () => {
             <div className="flex flex-row sm:flex-col gap-3 sm:text-right">
               {[
                 { n: "1st", label: "Place" },
-                { n: "64",  label: "Teams" },
+                { n: "64", label: "Teams" },
                 { n: "48h", label: "Build" },
               ].map((s) => (
                 <div key={s.label} className="text-center">

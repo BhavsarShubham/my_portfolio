@@ -17,6 +17,20 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setToggle(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <nav
       className={`${styles.paddingX} w-full flex items-center py-4 fixed top-0 z-30 transition-all duration-500 ${scrolled
@@ -52,7 +66,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <ul className="list-none hidden sm:flex flex-row gap-8 items-center">
+        <ul className="list-none hidden sm:flex flex-row gap-4 md:gap-6 lg:gap-8 items-center">
           {navLinks.map((nav) => (
             <li key={nav.id}>
               <a
@@ -99,16 +113,19 @@ const Navbar = () => {
           <AnimatePresence>
             {toggle && (
               <>
-                {/* Backdrop overlay to close when clicking outside */}
-                <motion.div
+                {/* Backdrop overlay to close the menu */}
+                <motion.button
+                  type="button"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.2 }}
                   onClick={() => setToggle(false)}
-                  className="fixed inset-0 bg-black/75 backdrop-blur-sm z-40"
-                  aria-hidden="true"
+                  className="fixed inset-0 w-full h-full bg-black/75 backdrop-blur-sm z-40 cursor-default"
+                  aria-label="Close navigation menu"
                 />
+
+
 
                 {/* Mobile Menu Dropdown */}
                 <motion.div
@@ -123,11 +140,10 @@ const Navbar = () => {
                       <li key={nav.id}>
                         <a
                           href={`#${nav.id}`}
-                          className={`flex items-center justify-between px-4 py-3 rounded-xl text-[15px] font-medium transition-all duration-200 ${
-                            active === nav.title
-                              ? "text-white bg-indigo-600/30 border border-indigo-500/40 font-semibold"
-                              : "text-[#cbd5e1] hover:text-white hover:bg-white/[0.08]"
-                          }`}
+                          className={`flex items-center justify-between px-4 py-3 rounded-xl text-[15px] font-medium transition-all duration-200 ${active === nav.title
+                            ? "text-white bg-indigo-600/30 border border-indigo-500/40 font-semibold"
+                            : "text-[#cbd5e1] hover:text-white hover:bg-white/[0.08]"
+                            }`}
                           onClick={() => {
                             setToggle(false);
                             setActive(nav.title);

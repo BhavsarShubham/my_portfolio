@@ -84,7 +84,12 @@ class AppErrorBoundary extends React.Component {
 const App = () => {
   return (
     <AppErrorBoundary>
-      <BrowserRouter>
+      <BrowserRouter
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true,
+        }}
+      >
         <div className="relative z-0 bg-primary">
           {/* Hero section with own background */}
           <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
